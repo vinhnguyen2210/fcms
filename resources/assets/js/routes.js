@@ -9,6 +9,7 @@ let routes = [
     {
         path: '/contacts',
         name: 'contacts',
+        meta: { requiresAuth: true },
         component: require('./views/Contacts')
     },
     {
