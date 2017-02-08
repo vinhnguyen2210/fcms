@@ -6,5 +6,5 @@ const app = new Vue({
     el: '#root',
     components: { App },
     template: '<app></app>',
-    router
+    router: router
 });
