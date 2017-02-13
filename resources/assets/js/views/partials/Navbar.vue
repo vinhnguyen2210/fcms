@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav has-shadow">
+    <nav class="nav has-shadow custom-color">
         <div class="container">
             <div class="nav-left">
                 <router-link class="nav-item" :to="{ name: 'home' }">
@@ -20,12 +20,21 @@
                     </figure>
                     Hi, {{ auth.user.profile.name }}
                 </a>
-                <a class="nav-item is-tab" v-if="auth.user.authenticated" href="javascript:void(0)" @click="logout">Log out</a>
+                <a class="nav-item is-tab" v-if="auth.user.authenticated" href="javascript:void(0)" @click="logout">
+                    <span class="icon is-small">
+                        <i class="fa fa-sign-out"></i>
+                    </span>
+                    Logout
+                </a>
             </div>
         </div>
     </nav>
 </template>
-
+<style>
+    nav.custom-color {
+        background: #f9f9f9;
+    }
+</style>
 <script>
 
 import auth from '../../auth.js'

@@ -1,5 +1,5 @@
 <template>
-    <div class="column is-half box">
+    <div class="column is-4 is-offset-4 box">
 
         <h3 class="title">Register New User</h3>
 
