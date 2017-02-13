@@ -9,5 +9,7 @@ Vue.use(VueSweetAlert);
 
 window.axios = axios;
 window.axios.defaults.headers.common = {
-    'X-Requested-With': 'XMLHttpRequest'
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].getAttribute('content'),
+    'Authorization': 'Bearer ' + localStorage.getItem('id_token'),
 };

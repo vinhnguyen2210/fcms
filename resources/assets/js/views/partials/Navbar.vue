@@ -1,35 +1,52 @@
 <template>
-    <header class="nav">
+    <nav class="nav has-shadow">
         <div class="container">
             <div class="nav-left">
-                <a class="nav-item">
-                    <img src="https://cdn.wpmayor.com/wp-content/uploads/2014/03/ContactUs-logo.png" alt="">
-                </a>
+                <router-link class="nav-item" :to="{ name: 'home' }">
+                    <img src="/images/logo.png" alt="FCMS logo">
+                </router-link>
             </div>
             <span class="nav-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
             <div class="nav-right nav-menu">
-                <router-link class="nav-item" :to="{ name: 'home' }">Home</router-link>
-                <router-link class="nav-item" :to="{ name: 'register' }">Register</router-link>
-                <router-link class="nav-item" :to="{ name: 'login' }">Login</router-link>
-                <span class="nav-item">
-                        <a class="button is-primary is-inverted">
-                            <span class="icon">
-                                <i class="fa fa-github"></i>
-                            </span>
-                            <span>Download</span>
-                        </a>
-                    </span>
+                <router-link class="nav-item is-tab" :to="{ name: 'register' }" v-if="!auth.user.authenticated">Register</router-link>
+                <router-link class="nav-item is-tab" :to="{ name: 'login' }" v-if="!auth.user.authenticated">Login</router-link>
+                <a class="nav-item is-tab" v-if="auth.user.authenticated">
+                    <figure class="image is-16x16" style="margin-right: 8px;">
+                        <img src="http://bulma.io/images/jgthms.png">
+                    </figure>
+                    Hi, {{ auth.user.profile.name }}
+                </a>
+                <a class="nav-item is-tab" v-if="auth.user.authenticated" href="javascript:void(0)" @click="logout">Log out</a>
             </div>
         </div>
-    </header>
+    </nav>
 </template>
 
 <script>
-    export default{
 
+import auth from '../../auth.js'
+
+export default {
+
+    data() {
+        return {
+            auth: auth
+        }
+    },
+
+    methods: {
+        logout() {
+            auth.logout()
+        }
+    },
+
+    mounted() {
+        auth.check()
     }
+}
+
 </script>
