@@ -22,7 +22,7 @@ export default {
                 this.user.profile = response.data.data;
 
                 router.push({
-                    name: 'home'
+                    name: 'dashboard'
                 })
             })
             .catch(error => errors.record(error.response.data));

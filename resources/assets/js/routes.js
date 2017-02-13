@@ -3,24 +3,41 @@ import VueRouter from 'vue-router';
 let routes = [
     {
         path: '/',
-        name: 'home',
-        component: require('./views/Home')
+        component: require('./Front'),
+        children: [
+            {
+                path: '',
+                name: 'home',
+                component: require('./views/Home')
+            },
+            {
+                path: '/register',
+                name: 'register',
+                component: require('./views/auth/Register')
+            },
+            {
+                path: '/login',
+                name: 'login',
+                component: require('./views/auth/Login')
+            }
+        ]
     },
     {
-        path: '/contacts',
-        name: 'contacts',
+        path: '/dashboard',
         meta: { requiresAuth: true },
-        component: require('./views/Contacts')
-    },
-    {
-        path: '/register',
-        name: 'register',
-        component: require('./views/auth/Register')
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: require('./views/auth/Login')
+        component: require('./Dashboard'),
+        children: [
+            {
+                path: '',
+                name: 'dashboard',
+                component: require('./views/dashboard/Index')
+            },
+            {
+                path: 'contacts',
+                name: 'contacts',
+                component: require('./views/dashboard/Contacts')
+            }
+        ]
     }
 ];
 
