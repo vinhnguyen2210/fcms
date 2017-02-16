@@ -5,26 +5,29 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Carbon\Carbon;
-use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+
     public function index(Request $request)
     {
         $data = [];
         $data['name'] = $request->user()->name;
         $data['email'] = $request->user()->email;
+
         return response()->json([
             'data' => $data,
         ]);
     }
 
-    public function login(LoginRequest $request, JWTAuth $JWTAuth)
+    public function login(LoginRequest $request)
     {
         try {
-            $token = $JWTAuth->attempt($request->only('email', 'password'), [
+            $token = $this->guard()->attempt($request->only('email', 'password'), [
                 'exp' => Carbon::now()->addWeek()->timestamp,
             ]);
         } catch (JWTException $e) {
@@ -41,6 +44,7 @@ class LoginController extends Controller
             $meta = [];
 
             $data['name'] = $request->user()->name;
+            $data['email'] = $request->user()->email;
             $meta['token'] = $token;
 
             return response()->json([

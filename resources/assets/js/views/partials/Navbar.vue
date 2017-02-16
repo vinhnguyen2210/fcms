@@ -37,8 +37,6 @@
 </style>
 <script>
 
-import auth from '../../auth.js'
-
 export default {
 
     data() {
@@ -51,10 +49,6 @@ export default {
         logout() {
             auth.logout()
         }
-    },
-
-    mounted() {
-        auth.check()
     }
 }
 

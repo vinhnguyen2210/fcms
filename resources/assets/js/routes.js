@@ -13,11 +13,13 @@ let routes = [
             {
                 path: '/register',
                 name: 'register',
+                meta:{forVisitors:true},
                 component: require('./views/auth/Register')
             },
             {
                 path: '/login',
                 name: 'login',
+                meta:{forVisitors:true},
                 component: require('./views/auth/Login')
             }
         ]
@@ -35,8 +37,17 @@ let routes = [
             {
                 path: 'contacts',
                 name: 'contacts',
-                component: require('./views/dashboard/Contacts')
-            }
+                component: require('./views/dashboard/contacts/Index')
+            },
+            {
+                path: '/contacts/create',
+                component: require('./views/dashboard/contacts/form.vue')
+            },
+            {
+                path: '/contacts/:id/edit',
+                component: require('./views/dashboard/contacts/form.vue'),
+                meta: {mode: 'edit'}
+            },
         ]
     }
 ];
