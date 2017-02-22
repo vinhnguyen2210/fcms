@@ -41,12 +41,17 @@ let routes = [
             },
             {
                 path: '/contacts/create',
+                name: 'contact-create',
                 component: require('./views/dashboard/contacts/form.vue')
             },
             {
                 path: '/contacts/:id/edit',
                 component: require('./views/dashboard/contacts/form.vue'),
                 meta: {mode: 'edit'}
+            },
+            {
+                path: '/contacts/:id',
+                component: require('./views/dashboard/contacts/Show')
             },
         ]
     }

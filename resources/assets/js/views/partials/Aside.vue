@@ -19,6 +19,14 @@
                     </span>
                     Contacts
                 </router-link>
+                <ul>
+                    <router-link :to="{ name: 'contact-create' }">
+                    <span class="icon">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                        Add New
+                    </router-link>
+                </ul>
             </li>
         </ul>
         <p class="menu-label">
