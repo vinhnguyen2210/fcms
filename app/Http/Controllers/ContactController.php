@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Auth;
@@ -38,23 +39,20 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param ContactRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $this->validate($request, [
-            'contact_name' => 'required|between:6, 255',
-            'email_address' => 'email|max:255',
-        ]);
-
         $contact = Contact::create([
             'user_id' => Auth::guard()->user()->id,
             'contact_name' => $request->contact_name,
             'email_address' => $request->email_address,
             'job_title' => $request->job_title,
             'company' => $request->company,
-
+            'website' => $request->website,
+            'mobile' => $request->mobile,
+            'description' => $request->description,
         ]);
 
         return response()
@@ -99,17 +97,12 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param ContactRequest|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactRequest $request, $id)
     {
-        $this->validate($request, [
-            'contact_name' => 'required',
-            'email_address' => 'email|max:255',
-        ]);
-
         $contact = Contact::findOrFail($id);
         $contact->update($request->all());
 

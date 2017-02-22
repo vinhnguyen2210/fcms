@@ -5,6 +5,18 @@
             <div>
                 <router-link :to="create" class="button is-primary">Create</router-link>
                 <a class="button is-primary" @click="showFilter = !showFilter">Filter</a>
+                <a class="button is-info" href="/export/xls">
+                    <span class="icon has-space">
+                        <i class="fa fa-file-excel-o"></i>
+                    </span>
+                     Excel
+                </a>
+                <a class="button is-info" href="/export/csv">
+                    <span class="icon has-space">
+                        <i class="fa fa-file"></i>
+                    </span>
+                    CSV
+                </a>
             </div>
         </div>
         <div class="panel">
@@ -88,6 +100,9 @@
         border-color: #b5b5b5;
         border: 1px solid #dbdbdb;
         border-radius: 3px;
+    }
+    .has-space {
+        margin-right: 2px !important;
     }
 
 </style>
