@@ -38,9 +38,6 @@
 
 <script>
 
-import auth from '../../auth.js';
-import {Errors} from '../../errors.js';
-
 export default {
 
     data() {

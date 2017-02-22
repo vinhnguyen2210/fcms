@@ -54,8 +54,6 @@
 </style>
 
 <script>
-    import {Errors} from '../../errors.js';
-
     export default {
         data () {
             return {

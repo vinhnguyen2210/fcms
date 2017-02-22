@@ -1,1 +1,43 @@
 @import './node_modules/bulma/bulma';
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  &-column {
+    flex: 4;
+    padding-right: 15px;
+  }
+  &-operator {
+    flex: 4;
+    padding-right: 15px;
+  }
+  &-input {
+    flex: 6;
+    padding-right: 15px;
+  }
+  &-btn {
+    flex: 1;
+  }
+}
+
+.pagination-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-input {
+  width: 45px;
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  padding-left: 10px;
+  padding-bottom: 2px;
+}

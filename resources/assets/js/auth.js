@@ -41,11 +41,15 @@ export default {
 
     logout() {
         localStorage.removeItem('id_token');
-        this.user.authenticated = false;
-        this.user.profile = null;
+        axios.get(
+            '/api/logout',
+        ).then(response => {
+            this.user.authenticated = false;
+            this.user.profile = null;
 
-        router.push({
-            name: 'login'
-        })
+            router.push({
+                name: 'login'
+            })
+        });
     }
 }
